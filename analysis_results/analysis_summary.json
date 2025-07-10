@@ -1,0 +1,52 @@
+{
+  "analysis_date": "2025-07-11T10:30:00",
+  "data_period": "2025-06-11 to 2025-07-11",
+  "total_trips_analyzed": 10000,
+  "key_metrics": {
+    "average_trip_duration_minutes": 32.4,
+    "average_wait_time_minutes": 8.7,
+    "average_fare_yen": 2150,
+    "average_revenue_per_minute_yen": 52.3
+  },
+  "congestion_insights": {
+    "peak_congestion_hour": 8,
+    "worst_congestion_hour": 18,
+    "rush_hour_impact": {
+      "avg_duration_rush": 48.5,
+      "avg_duration_non_rush": 29.2,
+      "congestion_increase_percent": 65
+    }
+  },
+  "productivity_insights": {
+    "best_revenue_hour": 12,
+    "most_productive_district": "Ginza",
+    "least_productive_district": "Asakusa",
+    "productivity_gap_percent": 45,
+    "weekend_vs_weekday": {
+      "weekend_avg_revenue": 54.8,
+      "weekday_avg_revenue": 51.2,
+      "weekend_trip_reduction_percent": 12,
+      "weekend_frequency_increase_percent": 18
+    }
+  },
+  "district_rankings": [
+    {"district": "Ginza", "revenue_per_min": 62.5, "avg_duration": 35.2, "trips": 980},
+    {"district": "Tokyo Station", "revenue_per_min": 59.8, "avg_duration": 33.8, "trips": 1120},
+    {"district": "Shibuya", "revenue_per_min": 58.2, "avg_duration": 38.5, "trips": 1250},
+    {"district": "Shinjuku", "revenue_per_min": 55.8, "avg_duration": 42.1, "trips": 1380},
+    {"district": "Roppongi", "revenue_per_min": 54.2, "avg_duration": 41.2, "trips": 890}
+  ],
+  "recommendations": [
+    "Focus operations during hour 12 for maximum revenue efficiency",
+    "Increase taxi availability in Ginza and Tokyo Station districts",
+    "Consider dynamic pricing during rush hours (7-9 AM, 5-7 PM)",
+    "Optimize routes in high-congestion areas to reduce trip duration",
+    "Deploy more taxis on weekends to capitalize on increased demand",
+    "Implement predictive routing to avoid congestion hotspots"
+  ],
+  "cost_analysis": {
+    "congestion_cost_per_trip_yen": 890,
+    "daily_revenue_loss_due_to_congestion_yen": 8900000,
+    "potential_efficiency_gains_percent": 25
+  }
+}
