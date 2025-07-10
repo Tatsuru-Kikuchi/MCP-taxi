@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokyo Taxi Analysis Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .insights-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .insights-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .insight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendations-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .recommendation-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+
+        .setup-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border-left: 5px solid #f39c12;
+        }
+
+        .setup-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #f39c12;
+            margin-bottom: 15px;
+        }
+
+        .setup-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .chart-wrapper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚕 Tokyo Taxi Analysis Dashboard</h1>
+            <p>Comprehensive analysis of taxi congestion and productivity in Tokyo</p>
+            <a href="https://github.com/Tatsuru-Kikuchi/MCP-taxi" class="github-link" target="_blank">
+                📂 View Repository on GitHub
+            </a>
+        </div>
+
+        <div class="setup-info">
+            <div class="setup-title">🚧 GitHub Pages Setup Required</div>
+            <div class="setup-text">
+                To enable GitHub Pages for this repository:
+                <br><br>
+                <strong>1.</strong> Go to your repository settings: <a href="https://github.com/Tatsuru-Kikuchi/MCP-taxi/settings/pages" target="_blank">Settings → Pages</a>
+                <br><strong>2.</strong> Under "Build and deployment" → "Source", select "Deploy from a branch"
+                <br><strong>3.</strong> Choose "main" branch and "/ (root)" folder
+                <br><strong>4.</strong> Click "Save"
+                <br><br>
+                Once enabled, this dashboard will be available at: <strong>https://tatsuru-kikuchi.github.io/MCP-taxi/</strong>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">10,000</div>
+                <div class="stat-label">Total Trips</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">32.4</div>
+                <div class="stat-label">Avg Duration (min)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">¥2,150</div>
+                <div class="stat-label">Avg Fare</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">¥52.3</div>
+                <div class="stat-label">Revenue/Minute</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">Hourly Trip Duration & Revenue</div>
+                <div class="chart-wrapper">
+                    <canvas id="hourlyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">District Performance</div>
+                <div class="chart-wrapper">
+                    <canvas id="districtChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Weekly Patterns</div>
+                <div class="chart-wrapper">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">Rush Hour Impact</div>
+                <div class="chart-wrapper">
+                    <canvas id="rushHourChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="insights-section">
+            <div class="insights-title">Key Insights</div>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-title">🚦 Rush Hour Impact</div>
+                    <div class="insight-text">Trip duration increases by 65% during rush hours (7-9 AM, 5-7 PM), significantly affecting productivity and passenger satisfaction.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">🌅 Weekend Effect</div>
+                    <div class="insight-text">Weekend trips are 12% shorter but 18% more frequent, indicating better traffic flow but higher demand.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">💰 Congestion Cost</div>
+                    <div class="insight-text">Traffic congestion adds ¥890 average cost per trip, resulting in ¥8.9M daily revenue loss across the city.</div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">📊 Productivity Gap</div>
+                    <div class="insight-text">45% difference between most and least productive districts, highlighting optimization opportunities.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendations">
+            <div class="recommendations-title">Strategic Recommendations</div>
+            <div class="recommendation-item">
+                <strong>1. Optimize Peak Hour Operations:</strong> Focus deployment during 11 AM - 2 PM for maximum revenue efficiency (¥55.6/min average).
+            </div>
+            <div class="recommendation-item">
+                <strong>2. Strategic District Focus:</strong> Increase taxi availability in Ginza (¥62.5/min) and Tokyo Station (¥59.8/min) districts.
+            </div>
+            <div class="recommendation-item">
+                <strong>3. Dynamic Pricing Implementation:</strong> Apply surge pricing during rush hours (7-9 AM, 5-7 PM) to balance supply and demand.
+            </div>
+            <div class="recommendation-item">
+                <strong>4. Route Optimization:</strong> Implement AI-powered routing to reduce congestion impact and improve trip efficiency.
+            </div>
+            <div class="recommendation-item">
+                <strong>5. Weekend Capacity Expansion:</strong> Deploy additional vehicles on weekends to capitalize on 18% higher demand frequency.
+            </div>
+            <div class="recommendation-item">
+                <strong>6. Predictive Analytics:</strong> Use machine learning to predict congestion patterns and proactively redirect taxis to optimal locations.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js configuration
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                }
+            }
+        };
+
+        // Hourly Chart
+        const hourlyCtx = document.getElementById('hourlyChart').getContext('2d');
+        new Chart(hourlyCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+                datasets: [{
+                    label: 'Trip Duration (min)',
+                    data: [25.2, 23.8, 22.1, 21.5, 22.8, 26.3, 35.1, 45.8, 52.3, 41.2, 28.5, 26.8, 31.2, 29.5, 27.8, 30.2, 36.8, 48.5, 51.2, 46.8, 38.5, 33.2, 31.8, 28.5],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    tension: 0.4,
+                    yAxisID: 'y'
+                }, {
+                    label: 'Revenue/min (¥)',
+                    data: [56.8, 58.1, 60.4, 59.8, 58.2, 57.1, 51.4, 48.5, 48.1, 50.7, 55.8, 57.6, 55.6, 56.8, 57.1, 55.9, 53.4, 48.0, 47.0, 47.7, 50.0, 53.8, 54.9, 55.8],
+                    borderColor: '#764ba2',
+                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                    tension: 0.4,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                ...chartOptions,
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Duration (minutes)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Revenue per minute (¥)'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hour of Day'
+                        }
+                    }
+                }
+            }
+        });
+
+        // District Chart
+        const districtCtx = document.getElementById('districtChart').getContext('2d');
+        new Chart(districtCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Ginza', 'Tokyo Station', 'Shibuya', 'Shinjuku', 'Roppongi', 'Harajuku', 'Ikebukuro', 'Ueno', 'Akihabara', 'Asakusa'],
+                datasets: [{
+                    label: 'Revenue per Minute (¥)',
+                    data: [62.5, 59.8, 58.2, 55.8, 54.2, 52.1, 51.8, 49.8, 48.5, 46.2],
+                    backgroundColor: [
+                        '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe', '#43e97b', '#38f9d7', '#ffecd2', '#fcb69f'
+                    ],
+                    borderColor: [
+                        '#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe', '#43e97b', '#38f9d7', '#ffecd2', '#fcb69f'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Revenue per Minute (¥)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'District'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Weekly Chart
+        const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
+        new Chart(weeklyCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: 'Trip Duration (min)',
+                    data: [34.2, 35.1, 33.8, 34.5, 38.2, 31.5, 29.8],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#667eea'
+                }, {
+                    label: 'Revenue/min (¥)',
+                    data: [51.5, 51.8, 52.1, 51.2, 50.8, 54.2, 55.8],
+                    borderColor: '#764ba2',
+                    backgroundColor: 'rgba(118, 75, 162, 0.2)',
+                    pointBackgroundColor: '#764ba2',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#764ba2'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 60
+                    }
+                }
+            }
+        });
+
+        // Rush Hour Chart
+        const rushHourCtx = document.getElementById('rushHourChart').getContext('2d');
+        new Chart(rushHourCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Rush Hour Trips', 'Non-Rush Hour Trips'],
+                datasets: [{
+                    data: [35, 65],
+                    backgroundColor: ['#f5576c', '#43e97b'],
+                    borderColor: ['#fff', '#fff'],
+                    borderWidth: 3,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ${percentage}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        console.log('Tokyo Taxi Dashboard loaded successfully!');
+        console.log('Repository: https://github.com/Tatsuru-Kikuchi/MCP-taxi');
+    </script>
+</body>
+</html>
