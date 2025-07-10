@@ -241,7 +241,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - **Author**: Tatsuru Kikuchi
-- **Email**: tatsuru.kikuchi@example.com
+- **Email**: tatsuru.kikuchi@gmail.com
 - **Repository**: https://github.com/Tatsuru-Kikuchi/MCP-taxi
 - **Dashboard**: https://tatsuru-kikuchi.github.io/MCP-taxi/dashboard.html
 
