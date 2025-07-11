@@ -1,1 +1,71 @@
-# MCP-taxi: Tokyo Taxi Analysis Dashboard\n\nThis repository analyzes the rate of congestion, and productivity of taxi in Tokyo.\n\n## Live Dashboard\n\n**[View Interactive Dashboard](https://tatsuru-kikuchi.github.io/MCP-taxi/)**\n\n*Note: If the link shows 404, GitHub Pages needs to be enabled in repository settings.*\n\n## Quick Start\n\n### View Online\n- Dashboard: https://tatsuru-kikuchi.github.io/MCP-taxi/\n- Status Page: https://tatsuru-kikuchi.github.io/MCP-taxi/status.html\n- Repository: https://github.com/Tatsuru-Kikuchi/MCP-taxi\n\n### Run Locally\n```bash\ngit clone https://github.com/Tatsuru-Kikuchi/MCP-taxi.git\ncd MCP-taxi\npip install -r requirements.txt\npython run_analysis.py\n```\n\n## Analysis Results\n\n### Key Metrics\n- 10,000 trips analyzed across 30-day simulation\n- 32.4 minutes average trip duration  \n- ¥2,150 average fare per trip\n- ¥52.3 revenue per minute\n\n### Critical Insights\n- 65% longer trips during rush hours (7-9 AM, 5-7 PM)\n- ¥890 congestion cost per trip\n- ¥8.9M daily revenue loss citywide\n- 45% productivity gap between districts\n\n### Top Districts\n1. Ginza - ¥62.5/min\n2. Tokyo Station - ¥59.8/min  \n3. Shibuya - ¥58.2/min\n4. Shinjuku - ¥55.8/min\n5. Roppongi - ¥54.2/min\n\n## Dashboard Features\n\n### Interactive Charts\n- Hourly Performance: Duration vs revenue trends\n- District Rankings: Productivity by location\n- Weekly Patterns: Day-of-week analysis\n- Rush Hour Impact: Peak vs off-peak comparison\n\n### User Experience\n- Real-time metrics with animations\n- Mobile-responsive design\n- Professional data visualizations\n- Strategic recommendations\n\n## GitHub Pages Setup\n\n### Enable GitHub Pages\n1. Go to [Settings → Pages](https://github.com/Tatsuru-Kikuchi/MCP-taxi/settings/pages)\n2. Set Source to \"GitHub Actions\"\n3. Click Save\n4. Wait 2-5 minutes for deployment\n\n### Verification Links\n- [Actions Status](https://github.com/Tatsuru-Kikuchi/MCP-taxi/actions)\n- [Pages Settings](https://github.com/Tatsuru-Kikuchi/MCP-taxi/settings/pages)\n\n## Project Structure\n\n```\nMCP-taxi/\n├── index.html              # Main dashboard\n├── dashboard.html          # Alternative view\n├── status.html             # Setup status\n├── run_analysis.py         # Analysis engine\n├── requirements.txt        # Dependencies\n├── analysis_results/       # Generated data\n│   ├── analysis_summary.json\n│   ├── hourly_analysis.csv\n│   └── district_analysis.csv\n├── .github/workflows/      # Auto-deployment\n└── docs/                   # Documentation\n```\n\n## Business Recommendations\n\n### Operations\n1. Peak Hours: Focus on 11 AM - 2 PM (¥55.6/min)\n2. Districts: Prioritize Ginza and Tokyo Station\n3. Weekends: Increase fleet for 18% higher demand\n\n### Technology\n4. Dynamic Pricing: Rush hour surge pricing\n5. Route Optimization: AI-powered navigation\n6. Predictive Analytics: Demand forecasting\n\n### Impact\n- 25% efficiency improvement potential\n- ¥8.9M daily savings from optimization\n- 15-20% revenue increase possible\n\n## Technical Details\n\n### Frontend\n- HTML5/CSS3 responsive design\n- Chart.js interactive visualizations\n- Vanilla JavaScript performance\n\n### Backend\n- Python 3.8+ analysis engine\n- Pandas/NumPy data processing\n- Realistic Tokyo simulation\n\n### Deployment\n- GitHub Pages hosting\n- GitHub Actions CI/CD\n- Jekyll static generation\n\n## Usage Example\n\n```python\nfrom run_analysis import TokyoTaxiAnalyzer\n\n# Initialize\nanalyzer = TokyoTaxiAnalyzer()\n\n# Generate data\nanalyzer.generate_sample_data(n_samples=10000)\n\n# Run analysis\nanalyzer.run_full_analysis()\n```\n\n## Contributing\n\n1. Fork the repository\n2. Create feature branch\n3. Add tests\n4. Submit pull request\n\n## License\n\nMIT License - see LICENSE file for details.\n\n## Contact\n\n- Author: Tatsuru Kikuchi\n- Repository: https://github.com/Tatsuru-Kikuchi/MCP-taxi\n- Dashboard: https://tatsuru-kikuchi.github.io/MCP-taxi/\n- Issues: https://github.com/Tatsuru-Kikuchi/MCP-taxi/issues\n\n---\n\nReady to deploy! Complete Tokyo taxi analysis with interactive dashboard, automated deployment, and business insights.\n\nBuilt for the Tokyo transportation community\n"
+# Tokyo Taxi Analysis Dashboard
+
+This repository analyzes taxi congestion and productivity patterns in Tokyo.
+
+## Dashboard
+
+[View Live Dashboard](https://tatsuru-kikuchi.github.io/MCP-taxi/)
+
+Note: If the link shows 404, GitHub Pages needs to be enabled.
+
+## Quick Start
+
+### Online
+- Dashboard: https://tatsuru-kikuchi.github.io/MCP-taxi/
+- Repository: https://github.com/Tatsuru-Kikuchi/MCP-taxi
+
+### Local Setup
+```
+git clone https://github.com/Tatsuru-Kikuchi/MCP-taxi.git
+cd MCP-taxi
+pip install -r requirements.txt
+python run_analysis.py
+```
+
+## Key Results
+
+- 10,000 trips analyzed
+- 32.4 minutes average duration
+- ¥2,150 average fare
+- 65% longer trips during rush hours
+- ¥890 congestion cost per trip
+
+## Top Districts
+1. Ginza - ¥62.5/min
+2. Tokyo Station - ¥59.8/min
+3. Shibuya - ¥58.2/min
+4. Shinjuku - ¥55.8/min
+5. Roppongi - ¥54.2/min
+
+## Features
+
+- Interactive charts and visualizations
+- Real-time metrics
+- Mobile-responsive design
+- Strategic recommendations
+
+## Setup GitHub Pages
+
+1. Go to Settings → Pages
+2. Set Source to "GitHub Actions"
+3. Click Save
+4. Wait for deployment
+
+## Files
+
+```
+MCP-taxi/
+├── index.html
+├── run_analysis.py
+├── requirements.txt
+└── analysis_results/
+```
+
+## Contact
+
+- Author: Tatsuru Kikuchi
+- Repository: https://github.com/Tatsuru-Kikuchi/MCP-taxi
+- Dashboard: https://tatsuru-kikuchi.github.io/MCP-taxi/
+
+Complete Tokyo taxi analysis with interactive dashboard.
+"
