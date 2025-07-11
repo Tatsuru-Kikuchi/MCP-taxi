@@ -1,0 +1,40 @@
+# Tokyo Taxi Analysis Dashboard Configuration
+title: "Tokyo Taxi Analysis Dashboard"
+description: "Comprehensive analysis of taxi congestion and productivity in Tokyo"
+url: "https://tatsuru-kikuchi.github.io"
+baseurl: "/MCP-taxi"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - run_analysis.py
+  - requirements.txt
+  - setup.py
+  - pytest.ini
+  - .github/
+  - PAGES_SETUP.md
+
+# Include files
+include:
+  - .nojekyll
+  - index.html
+  - dashboard.html
+  - analysis_results/
+
+# Site settings
+author:
+  name: "Tatsuru Kikuchi"
+  email: "tatsuru.kikuchi@example.com"
+
+# GitHub Pages settings
+github_username: Tatsuru-Kikuchi
+repository: MCP-taxi

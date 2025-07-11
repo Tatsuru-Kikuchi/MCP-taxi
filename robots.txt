@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tatsuru-kikuchi.github.io/MCP-taxi/sitemap.xml
