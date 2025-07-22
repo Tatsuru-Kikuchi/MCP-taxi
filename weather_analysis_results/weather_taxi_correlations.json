@@ -1,0 +1,187 @@
+{
+  "temperature_c": {
+    "trip_duration_minutes": {
+      "pearson_correlation": 0.1092,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.1375,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "fare_yen": {
+      "pearson_correlation": 0.2689,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.3061,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "wait_time_minutes": {
+      "pearson_correlation": 0.1236,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.1216,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "demand_multiplier": {
+      "pearson_correlation": 0.1613,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.1998,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "weather_influence": {
+      "pearson_correlation": 0.3301,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.4224,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    }
+  },
+  "humidity_percent": {
+    "trip_duration_minutes": {
+      "pearson_correlation": 0.2667,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.3197,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "fare_yen": {
+      "pearson_correlation": 0.3903,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.3897,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "wait_time_minutes": {
+      "pearson_correlation": 0.1701,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.1474,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "demand_multiplier": {
+      "pearson_correlation": 0.2751,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.3423,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "weather_influence": {
+      "pearson_correlation": 0.4633,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.4963,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    }
+  },
+  "rain_intensity_mm": {
+    "trip_duration_minutes": {
+      "pearson_correlation": 0.5166,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.5271,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "fare_yen": {
+      "pearson_correlation": 0.6109,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.6688,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "wait_time_minutes": {
+      "pearson_correlation": 0.2849,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.2579,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "demand_multiplier": {
+      "pearson_correlation": 0.4676,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.5538,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "weather_influence": {
+      "pearson_correlation": 0.7407,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.8533,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    }
+  },
+  "wind_speed_kmh": {
+    "trip_duration_minutes": {
+      "pearson_correlation": 0.2523,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.2659,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "fare_yen": {
+      "pearson_correlation": 0.3418,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.3216,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "wait_time_minutes": {
+      "pearson_correlation": 0.1517,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.1164,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "demand_multiplier": {
+      "pearson_correlation": 0.2457,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.2786,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "weather_influence": {
+      "pearson_correlation": 0.418,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": 0.4103,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    }
+  },
+  "visibility_km": {
+    "trip_duration_minutes": {
+      "pearson_correlation": -0.4417,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": -0.4267,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "fare_yen": {
+      "pearson_correlation": -0.5898,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": -0.5568,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "wait_time_minutes": {
+      "pearson_correlation": -0.2608,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": -0.2078,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "demand_multiplier": {
+      "pearson_correlation": -0.444,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": -0.4503,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    },
+    "weather_influence": {
+      "pearson_correlation": -0.7138,
+      "pearson_p_value": 0.0,
+      "spearman_correlation": -0.7166,
+      "spearman_p_value": 0.0,
+      "significance": "significant"
+    }
+  }
+}

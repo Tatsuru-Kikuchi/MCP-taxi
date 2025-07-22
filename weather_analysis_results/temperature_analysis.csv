@@ -1,0 +1,6 @@
+temp_category,fare_yen,demand_multiplier,trip_duration_minutes
+Very Cold (<5°C),,,
+Cold (5-15°C),1079.74,2.07,16.58
+Comfortable (15-25°C),1318.83,2.8,24.69
+Hot (25-35°C),1495.42,3.13,27.16
+Very Hot (>35°C),1926.22,3.85,31.89

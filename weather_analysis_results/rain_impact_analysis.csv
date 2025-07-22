@@ -1,0 +1,7 @@
+,fare_yen,fare_yen,fare_yen,trip_duration_minutes,trip_duration_minutes,wait_time_minutes,wait_time_minutes,demand_multiplier,demand_multiplier
+,mean,std,count,mean,std,mean,std,mean,std
+rain_category,,,,,,,,,
+No Rain,1091.34,395.18,9546,17.01,11.95,2.92,3.0,2.2,1.19
+Light Rain,1881.08,677.18,2957,31.88,23.97,4.88,5.06,3.72,2.15
+Moderate Rain,2558.27,933.47,2440,57.88,47.07,6.56,6.96,5.84,3.77
+Heavy Rain,4035.49,1107.53,57,88.81,48.9,12.27,9.87,6.64,1.25

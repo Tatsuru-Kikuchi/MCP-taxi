@@ -1,0 +1,58 @@
+{
+  "analysis_summary": {
+    "total_records_analyzed": 15000,
+    "analysis_period": "2024-06-01 00:00:00 to 2024-07-01 00:00:00",
+    "weather_data_points": 721,
+    "taxi_trips_analyzed": 15000
+  },
+  "key_correlations": {
+    "rain_intensity_vs_demand": {
+      "correlation": 0.4676,
+      "strength": "Moderate",
+      "interpretation": "Strong positive correlation - rain significantly increases taxi demand"
+    },
+    "rain_intensity_vs_fare": {
+      "correlation": 0.6109,
+      "strength": "Strong",
+      "interpretation": "Rain leads to higher fares due to increased demand and surge pricing"
+    },
+    "temperature_vs_demand": {
+      "correlation": 0.1613,
+      "strength": "Weak",
+      "interpretation": "Extreme temperatures (hot/cold) increase taxi usage"
+    },
+    "wind_speed_vs_wait_time": {
+      "correlation": 0.1517,
+      "strength": "Weak",
+      "interpretation": "Windy conditions increase wait times due to higher demand"
+    }
+  },
+  "weather_impact_analysis": {
+    "rain_effect": {
+      "fare_increase_percent": 269.8,
+      "wait_time_increase_percent": 95.2,
+      "no_rain_average_fare": 1091.0,
+      "heavy_rain_average_fare": 4035.0
+    },
+    "extreme_weather_impact": {
+      "heavy_rain_demand_multiplier": 6.64,
+      "clear_weather_demand_multiplier": 2.2
+    }
+  },
+  "business_insights": [
+    "Rain increases taxi fares by 269.8% on average",
+    "Wait times increase by 95.2% during rainy conditions",
+    "Heavy rain (>10mm/hour) creates the highest demand surge",
+    "Temperature extremes (<5\u00b0C or >35\u00b0C) significantly boost usage",
+    "Wind speed above 25km/h correlates with longer wait times",
+    "Weather-based dynamic pricing could optimize revenue"
+  ],
+  "recommendations": [
+    "Deploy more taxis during rainy weather forecasts",
+    "Implement weather-based surge pricing algorithms",
+    "Position vehicles strategically before weather events",
+    "Develop weather alert system for drivers",
+    "Create weather-responsive fleet management",
+    "Partner with weather services for real-time data"
+  ]
+}
